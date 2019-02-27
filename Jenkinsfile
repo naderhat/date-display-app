@@ -39,7 +39,7 @@ podTemplate(label: 'dojo-pod', containers: [
 	      }
 	    }
 	    stage('Docker Hub') {
-	    	container('docker') {
+	    	container('npm') {
 		        withCredentials([[$class: 'UsernamePasswordMultiBinding',
 		          credentialsId: 'dockerhub',
 		          usernameVariable: 'DOCKER_HUB_USER',
