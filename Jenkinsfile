@@ -1,6 +1,9 @@
 podTemplate(label: 'dojo-pod', containers: [
   containerTemplate(name: 'npm', image: 'node:carbon-jessie', command: 'cat', ttyEnabled: true),
   containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true)
+],
+volumes: [
+  hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')
 ])
  {
  node('dojo-pod') {
@@ -47,7 +50,7 @@ podTemplate(label: 'dojo-pod', containers: [
 		          passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
 			          sh """
 			            docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
-			            sudo docker build -t namespace/dojo-cicd-nader:${gitCommit} .
+			            docker build -t namespace/dojo-cicd-nader:${gitCommit} .
 			            docker push namespace/dojo-cicd-nader:${gitCommit}
 			          """
 			      }
