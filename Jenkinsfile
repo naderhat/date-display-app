@@ -21,6 +21,7 @@ podTemplate(label: 'dojo-pod', containers: [
         container('npm') {
           sh """
             pwd
+            ls -la 
             npm install
             npm test
             """
