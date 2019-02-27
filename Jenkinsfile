@@ -1,12 +1,12 @@
 podTemplate(containers: [
-  containerTemplate(name: 'carbon-jessie', image: 'node:carbon-jessie', command: 'cat', ttyEnabled: true)
+  containerTemplate(name: 'npm', image: 'node:carbon-jessie', command: 'cat', ttyEnabled: true)
 ])
  {
  node() {
     echo "Your Pipeline works!"
     stage('Build') {
       try {
-        container('gradle') {
+        container('npm') {
           sh """
             pwd
             npm install
