@@ -1,7 +1,8 @@
 podTemplate(label: label, containers: [
   containerTemplate(name: 'carbon-jessie', image: 'node:carbon-jessie', command: 'cat', ttyEnabled: true)
 ])
- {node() {
+ {
+ node() {
     echo "Your Pipeline works!"
     stage('Build') {
       try {
@@ -18,4 +19,5 @@ podTemplate(label: label, containers: [
         throw(exc)
       }
     }
+  }
 }
