@@ -1,4 +1,4 @@
-podTemplate(label: label, containers: [
+podTemplate(containers: [
   containerTemplate(name: 'carbon-jessie', image: 'node:carbon-jessie', command: 'cat', ttyEnabled: true)
 ])
  {
