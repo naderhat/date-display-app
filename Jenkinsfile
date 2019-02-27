@@ -2,7 +2,7 @@ podTemplate(label: 'dojo-pod', containers: [
   containerTemplate(name: 'npm', image: 'node:carbon-jessie', command: 'cat', ttyEnabled: true)
 ])
  {
- node() {
+ node('dojo-pod') {
     echo "Your Pipeline works!"
     stage('Build') {
       try {
