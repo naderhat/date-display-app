@@ -15,7 +15,7 @@ podTemplate(label: 'dojo-pod', containers: [
     		println "Failed to clone the repo"
     		throw(exc)
     	}
-    },
+    }
     stage('Build') {
       try {
         container('npm') {
