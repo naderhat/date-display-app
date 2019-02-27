@@ -21,7 +21,8 @@ podTemplate(label: 'dojo-pod', containers: [
         container('npm') {
           sh """
             pwd
-            ls -la 
+            ls -la
+            cd date-display-app
             npm install
             npm test
             """
