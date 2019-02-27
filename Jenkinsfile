@@ -1,4 +1,4 @@
-podTemplate(containers: [
+podTemplate(label: 'dojo-pod', containers: [
   containerTemplate(name: 'npm', image: 'node:carbon-jessie', command: 'cat', ttyEnabled: true)
 ])
  {
