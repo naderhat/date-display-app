@@ -3,11 +3,11 @@ podTemplate(label: 'dojo-pod', containers: [
 ])
  {
  node('dojo-pod') {
+ 	def myRepo = checkout scm
+    def gitCommit = myRepo.GIT_COMMIT
+    def gitBranch = myRepo.GIT_BRANCH
     echo "Your Pipeline works!"
-    environment {
-        DOCKER_USERNAME = credentials('jenkins-aws-secret-key-id')
-        DOCKER_PASSWORD = credentials('jenkins-aws-secret-access-key')
-    }
+    
     stages {
     	stage('Clone') {
 	    	try {
