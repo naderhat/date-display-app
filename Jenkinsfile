@@ -8,7 +8,7 @@ podTemplate(label: 'dojo-pod', containers: [
     def gitBranch = myRepo.GIT_BRANCH
     echo "Your Pipeline works!"
     
-    stages {
+    
     	stage('Clone') {
 	    	try {
 	    		container('npm') {
@@ -52,6 +52,6 @@ podTemplate(label: 'dojo-pod', containers: [
 			      }
 		     }
 		}
-	}
+	
   }
 }
