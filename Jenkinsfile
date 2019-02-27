@@ -1,5 +1,6 @@
 podTemplate(label: 'dojo-pod', containers: [
-  containerTemplate(name: 'npm', image: 'node:carbon-jessie', command: 'cat', ttyEnabled: true)
+  containerTemplate(name: 'npm', image: 'node:carbon-jessie', command: 'cat', ttyEnabled: true),
+  containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true)
 ])
  {
  node('dojo-pod') {
@@ -39,15 +40,15 @@ podTemplate(label: 'dojo-pod', containers: [
 	      }
 	    }
 	    stage('Docker Hub') {
-	    	container('npm') {
+	    	container('docker') {
 		        withCredentials([[$class: 'UsernamePasswordMultiBinding',
 		          credentialsId: 'dockerhub',
 		          usernameVariable: 'DOCKER_HUB_USER',
 		          passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
 			          sh """
 			            docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
-			            docker build -t namespace/my-image:${gitCommit} .
-			            docker push namespace/my-image:${gitCommit}
+			            docker build -t namespace/dojo-cicd-nader:${gitCommit} .
+			            docker push namespace/dojo-cicd-nader:${gitCommit}
 			          """
 			      }
 		     }
