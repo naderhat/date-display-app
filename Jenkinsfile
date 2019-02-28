@@ -50,8 +50,8 @@ volumes: [
 		          passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
 			          sh """
 			            docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
-			            docker build -t namespace/dojo-cicd-nader:${gitCommit} .
-			            docker push namespace/dojo-cicd-nader:${gitCommit}
+			            docker build -t 'DOCKER_HUB_USER'/dojo-cicd-nader:${gitCommit} .
+			            docker push 'DOCKER_HUB_USER'/dojo-cicd-nader:${gitCommit}
 			          """
 			      }
 		     }
